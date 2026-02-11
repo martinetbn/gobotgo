@@ -1,1 +1,18 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Go workspace file
+go.work
+
+# Environment variables
 .env
+
+# AI
+.serena
