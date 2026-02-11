@@ -2,7 +2,7 @@ package events
 
 import (
 	"github.com/bwmarrin/discordgo"
-	"github.com/martinetbn/gobotgo/commands"
+	"github.com/martinetbn/gobotgo/commands/common"
 )
 
 func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
@@ -10,5 +10,5 @@ func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	commands.Ping(s, m)
+	common.Ping(s, m)
 }
