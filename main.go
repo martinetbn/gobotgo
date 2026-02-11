@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -9,6 +8,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
+	"github.com/martinetbn/gobotgo/events"
 )
 
 func main() {
@@ -24,8 +24,8 @@ func main() {
 		log.Fatal("Error creating Discord session:", err)
 	}
 
-	discord.AddHandler(messageCreate)
-	discord.AddHandler(ready)
+	discord.AddHandler(events.MessageCreate)
+	discord.AddHandler(events.Ready)
 
 	err = discord.Open()
 	if err != nil {
@@ -37,18 +37,4 @@ func main() {
 	<-sc
 
 	discord.Close()
-}
-
-func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if m.Author.ID == s.State.User.ID {
-		return
-	}
-
-	if m.Content == "!ping" {
-		s.ChannelMessageSend(m.ChannelID, "Pong!")
-	}
-}
-
-func ready(s *discordgo.Session, r *discordgo.Ready) {
-	fmt.Println("Bot is connected.")
 }
