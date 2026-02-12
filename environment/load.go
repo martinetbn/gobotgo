@@ -20,8 +20,8 @@ func Load() {
 		log.Fatal("Error loading .env file", err)
 	}
 
-	ClientID = os.Getenv("CLIENT_ID")
-	GuildID = os.Getenv("GUILD_ID")
-	Token = os.Getenv("DISCORD_TOKEN")
+	ClientID = os.Getenv("BOT_CLIENT_ID")
+	GuildID = os.Getenv("BOT_GUILD_ID")
+	Token = os.Getenv("BOT_TOKEN")
 	Prefix = os.Getenv("BOT_PREFIX")
 }
