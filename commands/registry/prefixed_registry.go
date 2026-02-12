@@ -13,10 +13,10 @@ type prefixedCommand struct {
 	Handler     func(s *discordgo.Session, m *discordgo.MessageCreate, args []string)
 }
 
-var prefixed_command_list = []prefixedCommand{}
+var prefixedCommandList = []prefixedCommand{}
 
 func RegisterPrefixedCommand(name, description string, handler func(s *discordgo.Session, m *discordgo.MessageCreate, args []string)) {
-	prefixed_command_list = append(prefixed_command_list, prefixedCommand{
+	prefixedCommandList = append(prefixedCommandList, prefixedCommand{
 		Name:        name,
 		Description: description,
 		Handler:     handler,
@@ -24,7 +24,7 @@ func RegisterPrefixedCommand(name, description string, handler func(s *discordgo
 }
 
 func ExecutePrefixedCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
-	for _, command := range prefixed_command_list {
+	for _, command := range prefixedCommandList {
 		if strings.HasPrefix(m.Content, environment.Prefix+command.Name) {
 			command.Handler(s, m, strings.Fields(m.Content[len(environment.Prefix+command.Name):]))
 			return

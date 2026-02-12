@@ -11,14 +11,14 @@ type slashCommand struct {
 	Handler     func(s *discordgo.Session, i *discordgo.InteractionCreate)
 }
 
-var slash_command_list = []slashCommand{}
+var slashCommandList = []slashCommand{}
 
 func RegisterSlashCommand(name, description string, handler func(s *discordgo.Session, i *discordgo.InteractionCreate)) {
-	slash_command_list = append(slash_command_list, slashCommand{Name: name, Description: description, Handler: handler})
+	slashCommandList = append(slashCommandList, slashCommand{Name: name, Description: description, Handler: handler})
 }
 
 func PushRegisteredSlashCommands(s *discordgo.Session) {
-	for _, command := range slash_command_list {
+	for _, command := range slashCommandList {
 		s.ApplicationCommandCreate(s.State.User.ID, environment.GuildID, &discordgo.ApplicationCommand{
 			Name:        command.Name,
 			Description: command.Description,
@@ -27,7 +27,7 @@ func PushRegisteredSlashCommands(s *discordgo.Session) {
 }
 
 func ExecuteSlashCommand(s *discordgo.Session, i *discordgo.InteractionCreate) {
-	for _, command := range slash_command_list {
+	for _, command := range slashCommandList {
 		if command.Name == i.ApplicationCommandData().Name {
 			command.Handler(s, i)
 			return
