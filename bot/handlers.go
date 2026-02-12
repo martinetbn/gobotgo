@@ -2,6 +2,8 @@ package bot
 
 import (
 	"github.com/bwmarrin/discordgo"
+	_ "github.com/martinetbn/gobotgo/commands/prefixed"
+	_ "github.com/martinetbn/gobotgo/commands/slash"
 	"github.com/martinetbn/gobotgo/events"
 )
 
