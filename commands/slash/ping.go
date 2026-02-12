@@ -2,7 +2,7 @@ package slash
 
 import (
 	"github.com/bwmarrin/discordgo"
-	"github.com/martinetbn/gobotgo/commands/registry"
+	"github.com/martinetbn/gobotgo/registry"
 )
 
 func init() {

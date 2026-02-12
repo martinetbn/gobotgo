@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/martinetbn/gobotgo/commands/registry"
+	"github.com/martinetbn/gobotgo/registry"
 )
 
 func Ready(s *discordgo.Session, r *discordgo.Ready) {
