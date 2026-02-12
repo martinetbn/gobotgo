@@ -1,13 +1,13 @@
 package events
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/martinetbn/gobotgo/commands/registry"
 )
 
 func Ready(s *discordgo.Session, r *discordgo.Ready) {
-	fmt.Println("Bot is connected.")
+	log.Println("Bot is ready.")
 	registry.PushRegisteredSlashCommands(s)
 }
