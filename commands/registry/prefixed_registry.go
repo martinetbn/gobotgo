@@ -7,16 +7,16 @@ import (
 	"github.com/martinetbn/gobotgo/environment"
 )
 
-type PrefixedCommand struct {
+type prefixedCommand struct {
 	Name        string
 	Description string
 	Handler     func(s *discordgo.Session, m *discordgo.MessageCreate, args []string)
 }
 
-var prefixed_command_list = []PrefixedCommand{}
+var prefixed_command_list = []prefixedCommand{}
 
 func RegisterPrefixedCommand(name, description string, handler func(s *discordgo.Session, m *discordgo.MessageCreate, args []string)) {
-	prefixed_command_list = append(prefixed_command_list, PrefixedCommand{
+	prefixed_command_list = append(prefixed_command_list, prefixedCommand{
 		Name:        name,
 		Description: description,
 		Handler:     handler,

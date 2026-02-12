@@ -5,16 +5,16 @@ import (
 	"github.com/martinetbn/gobotgo/environment"
 )
 
-type SlashCommand struct {
+type slashCommand struct {
 	Name        string
 	Description string
 	Handler     func(s *discordgo.Session, i *discordgo.InteractionCreate)
 }
 
-var slash_command_list = []SlashCommand{}
+var slash_command_list = []slashCommand{}
 
 func RegisterSlashCommand(name, description string, handler func(s *discordgo.Session, i *discordgo.InteractionCreate)) {
-	slash_command_list = append(slash_command_list, SlashCommand{Name: name, Description: description, Handler: handler})
+	slash_command_list = append(slash_command_list, slashCommand{Name: name, Description: description, Handler: handler})
 }
 
 func PushRegisteredSlashCommands(s *discordgo.Session) {
