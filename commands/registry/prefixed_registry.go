@@ -1,9 +1,8 @@
 package registry
 
 import (
-	"os"
-
 	"github.com/bwmarrin/discordgo"
+	"github.com/martinetbn/gobotgo/environment"
 )
 
 type PrefixedCommand struct {
@@ -24,7 +23,7 @@ func RegisterPrefixedCommand(name, description string, handler func(s *discordgo
 
 func ExecutePrefixedCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	for _, command := range prefixed_command_list {
-		if m.Content == os.Getenv("BOT_PREFIX")+command.Name {
+		if m.Content == environment.Prefix+command.Name {
 			command.Handler(s, m)
 			return
 		}

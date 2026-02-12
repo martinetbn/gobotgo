@@ -7,12 +7,11 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/martinetbn/gobotgo/environment"
 )
 
 func Connect() {
-	token := os.Getenv("DISCORD_TOKEN")
-
-	discord, err := discordgo.New("Bot " + token)
+	discord, err := discordgo.New("Bot " + environment.Token)
 	if err != nil {
 		log.Fatal("Error creating Discord session:", err)
 	}

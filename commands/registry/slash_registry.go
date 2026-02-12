@@ -1,9 +1,8 @@
 package registry
 
 import (
-	"os"
-
 	"github.com/bwmarrin/discordgo"
+	"github.com/martinetbn/gobotgo/environment"
 )
 
 type SlashCommand struct {
@@ -20,7 +19,7 @@ func RegisterSlashCommand(name, description string, handler func(s *discordgo.Se
 
 func PushRegisteredSlashCommands(s *discordgo.Session) {
 	for _, command := range slash_command_list {
-		s.ApplicationCommandCreate(s.State.User.ID, os.Getenv("GUILD_ID"), &discordgo.ApplicationCommand{
+		s.ApplicationCommandCreate(s.State.User.ID, environment.GuildID, &discordgo.ApplicationCommand{
 			Name:        command.Name,
 			Description: command.Description,
 		})
